@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<body>
+    <main id="main-body">
+        <div id="container-body" class="carrito">
+            <div class="container-product">
+                <h2><span class="poke-text high">Carrito</span></h2>
+                <div class="container-precio"><p class="precio">Precio</p></div>
+                <hr>
+                <div id="carrito"></div>
+                <script>mostrarCarrito()</script>
+                <input class="cont-compra" type="submit" onclick="EnviarCarrito('procesar.html','cuerpo',getCarrito())" value="Continuar">
+            </div>
+        </div>
+    </main>
+</body>
+</html>
