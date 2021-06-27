@@ -31,26 +31,29 @@ public class RecogerCarrito extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         ServletInputStream entrada = request.getInputStream();
-        try{
+        HttpSession sesion = request.getSession();
+        
+        if (sesion != null && sesion.getAttribute("usuario") != null){
+            try{
             List<Producto> carrito = ProcesadorCarritoJSON.procesarCarrito(entrada);
             request.setAttribute("carrito", carrito);
             
             for (int i=0; i < carrito.size(); i++)
                 System.out.println(carrito.get(i).getId());
             
-            HttpSession sesion = request.getSession(true);
             AccesoBD con = AccesoBD.getInstance(); //Instancia de la clase factoría AccesoBD
             UserBD user = (UserBD)con.conseguirUsarioBD((String)sesion.getAttribute("usuario"));
             request.setAttribute("form-user", user);
             sesion.setAttribute("carrito", carrito);
-            
-            
-            // Para poder conseguir los productos en FormalizarPedido.java
-        }catch(Exception e){
-            System.out.println(e);
+            request.getRequestDispatcher("resguardo.jsp").forward(request, response);
+            }catch(Exception e){
+                System.out.println(e);
+            }
+        }else{
+            response.sendRedirect("login.html");
         }
         
-        request.getRequestDispatcher("resguardo.jsp").forward(request, response);
+        
     }
 }
 

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/admin-view.js"></script>
+    <script src="https://kit.fontawesome.com/997ce922a1.js" crossorigin="anonymous"></script>
+    <title>Usuario</title>
+</head>
+<body>
+    <main id="main-body">
+        <div id="container-body-user">
+            <div class="container-login inicio">
+                <div class="container-sign">
+                    <div class="sign-content">
+                        <h1><span class="poke-text">MAESTRO</span> POKEMON</h1>
+                        <h2>Inicia sesión para defender tu gimnasio</h2>
+                        <button class="btn-usuario button-registro" onclick="Cargar('registro.html', 'cuerpo')">Registrate</button>
+                        <div class="or-usuario">
+                            <hr class="hr-left">
+                            <h2 class="or">O</h2>
+                            <hr class="hr-right"> 
+                        </div>
+                        <form method="post" class="input-usuario" onsubmit="ProcesarForm(this, 'login.html', 'cuerpo');return false">
+                            <input type="text" name="usuario" placeholder="Usuario">
+                            <input type="password" name="clave" placeholder="Contraseña">
+                            <button class="btn-usuario button-registro">
+                                <a>Entrar</a>
+                            </button>
+                        </form>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut, laudantium?</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

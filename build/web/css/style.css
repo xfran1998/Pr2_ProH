@@ -143,10 +143,8 @@ and open the template in the editor.
     max-width: 1250px;
     flex-direction: column;
     margin-bottom: 20px;
-    align-content: flex-start;
-    align-items: flex-start;
-    align-self: flex-start;
-    justify-content: center;
+    align-items: center;
+    justify-content: flex-start;
     flex-wrap: wrap;
 }
 
@@ -287,6 +285,8 @@ and open the template in the editor.
     text-align: center;
     padding: 20px 60px;
     color: black;
+    align-items: center;
+    justify-content: center;
 }
 
 .poke-text{
@@ -318,6 +318,9 @@ and open the template in the editor.
     margin: 8px 0;
     background-color: rgb(52, 116, 236);
     border-radius: 3px;
+    font-size: 16px;
+    font-weight: bold;  
+    width: 100px;
 }
 
 .or{
@@ -358,7 +361,10 @@ input:last-child{
 }
 
 .container-login{
+    width: 100%;
     display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .container-user, .container-master{
@@ -708,7 +714,11 @@ p .pass-incorrecta{
 }
 
 .cont-compra{
-    width: 20rem;
+    width: fit-content;
+    height: fit-content;
+    font-size: 1rem;
+    margin-top: 10px; 
+    padding: 10px 15px;
 }
 
 .check-out{
@@ -795,9 +805,77 @@ p .pass-incorrecta{
 }
 
 .container-recibo{
+    height: 100%;
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+}
+
+.icon-user{
+    display: block;
+    position: absolute;
+    margin-top: 25px;
+}
+
+.icon-user:hover{
+    font-size: 50px;
+    color: #E9C46A;
+}
+
+.pedido-item{
+    list-style: none;
+    display: flex;
+}
+
+.pedido-eliminar{
+    margin-right: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.pedido-eliminar button i{
+    transform: scale(1.2,1.2);
+}
+
+.pedido-item{
+    margin-bottom: 30px;
+}
+
+.pedido-eliminar button i:hover{
+    transform: scale(1.5,1.5);
+    color: #F4A261;
+}
+
+.pedido-eliminar a{
+    text-decoration: none;
+    color: #fff;
+}
+
+.pedido-eliminar form{
+    display: none;
+}
+
+.pedido-eliminar button{
+    background: none;
+    color: inherit;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+}
+
+.icon-user-right{
+    right: 50px;
+}
+
+.icon-user-left{
+    left: 50px;
+}
+
+.button-registro{
+    padding: 10px 20px;
+    width: auto;
 }

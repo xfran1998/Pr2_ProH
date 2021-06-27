@@ -4,18 +4,11 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/D:/Uni/Segundo/Practica/ProgH/Pr2/PokeShop/web/index.html</file>
-            <file>file:/D:/Uni/Segundo/Practica/ProgH/Pr2/PokeShop/src/java/p2/controller/RecogerCarrito.java</file>
+            <file>file:/D:/Uni/Segundo/Practica/ProgH/Pr2/PokeShop/web/js/boton.js</file>
             <file>file:/D:/Uni/Segundo/Practica/ProgH/Pr2/PokeShop/web/login.jsp</file>
-            <file>file:/D:/Uni/Segundo/Practica/ProgH/Pr2/PokeShop/src/java/p2/controller/FormalizarPedido.java</file>
-            <file>file:/D:/Uni/Segundo/Practica/ProgH/Pr2/PokeShop/src/java/p2/controller/Tienda.java</file>
-            <file>file:/D:/Uni/Segundo/Practica/ProgH/Pr2/PokeShop/src/java/p2/controller/LoginTienda.java</file>
-            <file>file:/D:/Uni/Segundo/Practica/ProgH/Pr2/PokeShop/web/pedido_finalizado.jsp</file>
-            <file>file:/D:/Uni/Segundo/Practica/ProgH/Pr2/PokeShop/web/carrito.html</file>
-            <file>file:/D:/Uni/Segundo/Practica/ProgH/Pr2/PokeShop/src/java/p2/UserBD.java</file>
-            <file>file:/D:/Uni/Segundo/Practica/ProgH/Pr2/PokeShop/web/productos.jsp</file>
-            <file>file:/D:/Uni/Segundo/Practica/ProgH/Pr2/PokeShop/web/resguardo.jsp</file>
-            <file>file:/D:/Uni/Segundo/Practica/ProgH/Pr2/PokeShop/src/java/p2/controller/ListadoProductos.java</file>
-            <file>file:/D:/Uni/Segundo/Practica/ProgH/Pr2/PokeShop/src/java/p2/AccesoBD.java</file>
+            <file>file:/D:/Uni/Segundo/Practica/ProgH/Pr2/PokeShop/web/contacto.html</file>
+            <file>file:/D:/Uni/Segundo/Practica/ProgH/Pr2/PokeShop/web/administracion.html</file>
+            <file>file:/D:/Uni/Segundo/Practica/ProgH/Pr2/PokeShop/web/css/style.css</file>
         </group>
     </open-files>
 </project-private>

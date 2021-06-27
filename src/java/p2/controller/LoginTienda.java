@@ -21,7 +21,6 @@ import p2.UserBD;
  */
 @WebServlet(name = "LoginTienda", urlPatterns = {"/login.html"})
 public class LoginTienda extends HttpServlet {
-
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.

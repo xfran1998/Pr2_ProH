@@ -1,6 +1,5 @@
 var add = document.getElementsByClassName("btn-add");
 //localStorage.clear();
-console.log("esdadad");
 var productos = [];
 
 var item = {

@@ -14,16 +14,15 @@
                 { //Mostramos el formulario para la introducción del usuario y la clave
                 System.out.println("Inicio Sesion");
             %>
+            <script> SetLoginActive() </script>
             <div id="container-body-user">
                 <div class="container-login inicio">
                     <!-- Login Interface -->
                     <div class="container-sign">
                         <div class="sign-content">
-                            <h1><span class="poke-text">MAESTRO</span> POKEMON</h1>
+                            <h1><span class="poke-text">ENTRENADOR</span> POKEMON</h1>
                             <h2>Inicia sesión para defender tu gimnasio</h2>
-                            <button class="btn-usuario master btn-login">
-                                <a><i class="e"></i>&nbsp; Log in with Facebook</a>
-                            </button>
+                            <button class="btn-usuario button-registro" onclick="Cargar('registro.html', 'cuerpo')">Registrate</button>
                             <div class="or-usuario">
                                 <hr class="hr-left">
                                 <h2 class="or">O</h2>
@@ -42,7 +41,7 @@
                                 %>
                                 <input type="text" name="usuario" placeholder="Usuario">
                                 <input type="password" name="clave" placeholder="Contraseña">
-                                <button class="btn-usuario master btn-login">
+                                <button class="btn-usuario button-registro">
                                     <a>Entrar</a>
                                 </button>
                             </form>
@@ -62,15 +61,27 @@
                 <div class="container-user user">
                     <div class="container-user-datos">
                         <h1><span class="poke-text high">Datos Personales</span></h1>
+                        <i onclick="Cargar('cerrar_sesion.html','cuerpo')" class="fas fa-user-slash fa-3x icon-user icon-user-left"></i>
+                        <i onclick="Cargar('usuario_pedidos.html','cuerpo')" class="fas fa-archive fa-3x icon-user icon-user-right"></i>
+                        <%
+                        //Utilizamos una variable en la sesión para informar de los mensajes de Error
+                        String mensaje = (String) session.getAttribute("mensaje");
+                        if (mensaje != null) { //Eliminamos el mensaje consumido
+                            session.removeAttribute("mensaje");
+                        %>
+                        <p><span class="pass-incorrecta"> <%=mensaje%> </span></p>
+                        <%
+                        }
+                        %>
                         <div class="cambio-info-usuario">
-                            <form action="procesar.cgi." method="POST">
+                            <form method="post" class="input-usuario" onsubmit="ProcesarForm(this, 'modificar_usuario.html', 'cuerpo');return false">
                                 <div>
                                     <label for="name">Nombre</label>
                                     <input type="text" name="name" id="name" value="<%=user.getNombre()%>" required>
                                 </div>
                                 <div>
-                                    <label for="apellido">Apellidos</label>
-                                    <input type="text" name="apellido" id="apellido" value="<%=user.getApellidos()%>" required>
+                                    <label for="apellidos">Apellidos</label>
+                                    <input type="text" name="apellidos" id="apellidos" value="<%=user.getApellidos()%>" required>
                                 </div>
                                 <div>
                                     <label for="domicilio">Domicilio</label>
@@ -92,6 +103,9 @@
                                     <label for="telef">Teléfono</label>
                                     <input type="tel" pattern="[0-9]{9}" name="telef" id="telef" value="<%=user.getTelefono()%>" required>
                                 </div>
+                                <button class="btn-usuario button-registro">
+                                    <a>Cambiar Usuario</a>
+                                </button>
                             </form>
                         </div>
                     </div>

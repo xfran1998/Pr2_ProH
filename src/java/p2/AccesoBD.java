@@ -193,13 +193,86 @@ public final class AccesoBD {
         
         return codigoPedido;
     }
-    /*
-    SELECT * 
-    FROM pedidos p 
-    WHERE p.persona=(SELECT u.codigo FROM usuarios u WHERE u.usuario="fran")
-    */
+    
+    public List<PedidoBD> conseguirPedidos(String user){
+        List<PedidoBD> pedidos = new ArrayList<PedidoBD>();
+        
+        try{
+            String con = "SELECT * FROM pedidos p WHERE p.persona = (SELECT u.codigo FROM usuarios u WHERE u.usuario = '" + user + "')";
+            Statement s = conexionBD.createStatement();
+            ResultSet resultado = s.executeQuery(con);
 
-    /*
-    INSERT INTO `pedidos` (`codigo`, `persona`, `fecha`, `importe`, `estado`) VALUES (NULL, (SELECT u.codigo FROM usuarios u WHERE u.usuario="fran"), NOW(), '123', '1');
-    */
+            while (resultado.next()) {
+                int codPedido = resultado.getInt("codigo");
+                String fecha = resultado.getString("fecha");
+                float importe = resultado.getFloat("importe");
+                int estado = resultado.getInt("estado");
+                
+                PedidoBD ped = new PedidoBD();
+                
+                ped.setCodigo(codPedido);
+                ped.setFecha(fecha);
+                ped.setImporte(importe);
+                ped.setEstado(estado);
+                
+                pedidos.add(ped);
+            }
+        }catch (Exception e) {
+            System.err.println("Error al conseguir pedidos");
+            System.err.println(e.getMessage());
+        }
+        
+        return pedidos;
+    }
+    
+    public void cancelarPedido(int id, String user){
+        try{
+            String con = "SELECT p.estado FROM pedidos p WHERE p.codigo='"+ id + "' AND p.persona=(SELECT u.codigo FROM usuarios u WHERE u.usuario='" + user + "')";
+            Statement s = conexionBD.createStatement();
+            ResultSet resultado = s.executeQuery(con);
+            int estado = 0;
+                        
+            if (resultado.next()) {
+                estado = resultado.getInt("estado");                
+            }
+            
+            if (estado == 1){
+                // Eliminando primero clave ajena de productos en detalles
+                con = "DELETE FROM detalle WHERE codigo_pedido = '" + id + "'";
+                s.execute(con);
+                
+                // Eliminando el pedido
+                con = "DELETE FROM pedidos WHERE codigo = '" + id + "'";
+                s.execute(con);
+            }
+        }catch (Exception e) {
+            System.err.println("Error al eliminar productos");
+            System.err.println(e.getMessage());
+        }
+    }
+    
+    public Boolean registrarUsuario(String user, String password, String nombre, String apellidos){
+        Boolean registroCompleto;
+        
+        try{
+            String con = "SELECT * FROM usuarios WHERE usuarios.usuario='" + user + "'";
+            Statement s = conexionBD.createStatement();
+            ResultSet resultado = s.executeQuery(con);
+            
+            if (resultado.next()) {
+               registroCompleto = false; // Ya existe un usuario
+            }
+            else {
+                con = "INSERT INTO usuarios (codigo, activo, admin, usuario, clave, nombre, apellidos, domicilio, poblacion, provincia, cp, telefono) VALUES (NULL, '1', '0', '" + user + "','" + password + "','" + nombre + "','" + apellidos + "', NULL, NULL, NULL, NULL, NULL)";
+                s.execute(con);
+                registroCompleto = true;
+            }
+        }catch (Exception e) {
+            System.err.println("Error al crear usuario");
+            System.err.println(e.getMessage());
+            registroCompleto = false;
+        }
+        
+        return registroCompleto;
+    }
 }

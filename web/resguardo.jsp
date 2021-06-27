@@ -14,6 +14,18 @@
         float precioTotal = 0;
         List<Producto> productos = (List<Producto>)request.getAttribute("carrito");
         UserBD user = (UserBD)request.getAttribute("form-user");
+        
+        String domicilio = user.getDomicilio();
+        if (domicilio == null) 
+            domicilio = "";
+        
+        String poblacion = user.getPoblacion();
+        if (poblacion == null) 
+            poblacion = "";  
+        
+        String provincia = user.getProvincia();
+        if (provincia == null) 
+            provincia = "";  
     %>
     <main id="main-body">
         <div id="container-body" class="procesar">
@@ -37,15 +49,15 @@
                                 </div>
                                 <div>
                                     <label for="domicilio">Domicilio</label>
-                                    <input type="text" name="domicilio" id="domicilio" value="<%=user.getDomicilio()%>" required>
+                                    <input type="text" name="domicilio" id="domicilio" value="<%=domicilio%>" required>
                                 </div>
                                 <div>
                                     <label for="poblacion">Poblacion</label>
-                                    <input type="text" name="poblacion" id="poblacion" value="<%=user.getPoblacion()%>" required>
+                                    <input type="text" name="poblacion" id="poblacion" value="<%=poblacion%>" required>
                                 </div>
                                 <div>
                                     <label for="provincia">Provincia</label>
-                                    <input type="text" name="provincia" id="provincia" value="<%=user.getProvincia()%>" required>
+                                    <input type="text" name="provincia" id="provincia" value="<%=provincia%>" required>
                                 </div>
                                 <div>
                                     <label for="cp">CP</label>
